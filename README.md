@@ -4,9 +4,9 @@
 PodcastSdk is a .NET implementation of the podcast objects suitable for serialization to XML to be used as an RSS feed.
 
 ## Install PodcastSdk via Nuget
-If you want to include PodcastSdk in your project, you can [install it directly from NuGet](https://www.nuget.org/packages/AWJ.PodcastSdk/)
+If you want to include PodcastSdk in your project, you can [install it directly from NuGet](https://www.nuget.org/packages/PodcastSdk/)
 
 To install PodcastSdk, run the following command in the Package Manager Console
 ```
-PM> Install-Package AWJ.PodcastSdk
+PM> Install-Package PodcastSdk
 ```
