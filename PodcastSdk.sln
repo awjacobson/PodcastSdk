@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastSdk", "PodcastSdk\PodcastSdk.csproj", "{39706587-8696-43E2-B932-A4E222ADEA44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastSdk.Tests", "PodcastSdk.Tests\PodcastSdk.Tests.csproj", "{3A9309DD-254D-4756-A6AF-5CF111CDBDDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39706587-8696-43E2-B932-A4E222ADEA44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39706587-8696-43E2-B932-A4E222ADEA44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39706587-8696-43E2-B932-A4E222ADEA44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39706587-8696-43E2-B932-A4E222ADEA44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A9309DD-254D-4756-A6AF-5CF111CDBDDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A9309DD-254D-4756-A6AF-5CF111CDBDDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A9309DD-254D-4756-A6AF-5CF111CDBDDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A9309DD-254D-4756-A6AF-5CF111CDBDDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EC1C161-D4D6-4F1C-A1E0-D23AB28DE4D0}
+	EndGlobalSection
+EndGlobal
