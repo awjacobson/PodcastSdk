@@ -1,4 +1,6 @@
-﻿using System.Xml.Serialization;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Serialization;
 
 namespace PodcastSdk.Models
 {
@@ -6,8 +8,12 @@ namespace PodcastSdk.Models
     /// The episode content, file size, and file type information.
     /// </summary>
     [XmlType("enclosure")]
-    public class Enclosure
+    public class Enclosure : IValidatableObject
     {
+        public static readonly string LengthRequired = "Length is required";
+        public static readonly string UrlIsRequired = "Url is required";
+        public static readonly string UrlContainsSpaces = @"Url cannot contain spaces ("" "") or url encoded spaces (""+"")";
+
         /// <summary>
         /// The length attribute is the file size in bytes.
         /// </summary>
@@ -35,7 +41,7 @@ namespace PodcastSdk.Models
         /// The URL attribute points to your podcast media file.
         /// </summary>
         /// <remarks>
-        /// IMPORTANT: URL CANNOT HAVE SPACES. URL ENCODING BY REPLACING SPACES WITH '+' IS NOT ACCEPTED BY ITUNE EITHER.
+        /// IMPORTANT: URL CANNOT HAVE SPACES. URL ENCODING BY REPLACING SPACES WITH '+' IS NOT ACCEPTED BY ITUNES EITHER.
         /// <p>
         /// The file extension specified within the URL attribute determines whether or
         /// not content appears in the podcast directory. Supported file formats include
@@ -46,5 +52,23 @@ namespace PodcastSdk.Models
         /// </example>
         [XmlAttribute("url")]
         public string Url { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (Length == 0)
+            {
+                yield return new ValidationResult(LengthRequired, new string[] { nameof(Length) });
+            }
+
+            if (string.IsNullOrWhiteSpace(Url))
+            {
+                yield return new ValidationResult(UrlIsRequired, new string[] { nameof(Url) });
+            }
+
+            if (Url != null && (Url.Contains(" ") || Url.Contains("+")))
+            {
+                yield return new ValidationResult(UrlContainsSpaces, new string[] { nameof(Url) });
+            }
+         }
     }
 }

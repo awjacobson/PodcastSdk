@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace PodcastSdk.Models
 {
-    public class Item : IXmlSerializable
+    public class Item : IXmlSerializable, IValidatableObject
     {
+        public static readonly string TitleIsRequired = $"{nameof(Title)} is required";
+        public static readonly string EnclosureIsRequired = $"{nameof(Enclosure)} is required";
+
         /// <summary>
         /// The episode type.
         /// </summary>
@@ -133,6 +138,27 @@ namespace PodcastSdk.Models
         public void ReadXml(XmlReader reader)
         {
             throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (string.IsNullOrWhiteSpace(Title))
+            {
+                yield return new ValidationResult(Title, new string[] { nameof(Title) });
+            }
+
+            if (Enclosure == null)
+            {
+                yield return new ValidationResult(EnclosureIsRequired, new string[] { nameof(Enclosure) });
+            }
+            else
+            {
+                foreach (var validationResult in Enclosure.Validate(validationContext))
+                {
+                    yield return validationResult;
+                }
+            }
+
         }
 
         public void WriteXml(XmlWriter writer)
