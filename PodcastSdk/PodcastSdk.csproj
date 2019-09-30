@@ -10,6 +10,8 @@
     <PackageTags>c# csharp .net</PackageTags>
     <Authors>Aaron Jacobson</Authors>
     <Company />
+    <Version>1.0.1</Version>
+    <Description>.NET classes suitable for serializing to an XML RSS podcast feed.</Description>
   </PropertyGroup>
 
   <ItemGroup>
